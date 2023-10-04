@@ -23,7 +23,7 @@ function App() {
   const calcute=()=>{
     
     height>99 ? setHheight((height*height)/10000):setErrorHeight("Your number is cm");
-    weight>20 ? setCalcuute(weight/hheight):setErrorWeight("Your number is kg");
+    weight>20 ? setCalcuute((weight/hheight).toFixed(2)):setErrorWeight("Your number is kg");
     
 
   }
