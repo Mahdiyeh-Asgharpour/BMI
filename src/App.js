@@ -25,9 +25,13 @@ function App() {
     height>99 ? setHheight((height*height)/10000):setErrorHeight("Your number is cm");
     weight>20 ? setCalcuute(weight/hheight):setErrorWeight("Your number is kg");
     
-    console.log(calcuute);
-    document.getElementById("result").innertext=calcuute;
-    
+
+  }
+  const result =(props)=>{
+    if(calcuute == Infinity){  setCalcuute(weight/hheight);} 
+    if (calcuute ==Infinity || calcuute ==0){
+      // props.Style.Opacity=0;
+    }
 
   }
   return (
@@ -38,15 +42,15 @@ function App() {
       <span className='text'>
         <h1>BMI</h1>
         <h3>Height</h3>
-        <input id='height' type='text' onChange={handleh} />
+        <input id='height' style={{border: height<99  ? "red 2px solid" : "#5B8FB9 2px solid"}} type='text' onChange={handleh} />
         <h6 >{errorheight}</h6>
         <h3>Weight</h3>
-        <input id='weight' type='text' onChange={handlew} />
+        <input id='weight' type='text' style={{border: weight<20  ? "red 2px solid" : "#5B8FB9 2px solid"}} onChange={handlew} />
         <h6 >{errorweight}</h6>
         <div className='btn'>
           <button onClick={calcute}>Calcute</button>
         </div>
-        <h1 id='result'></h1>
+        <h3 id='result' onChange={result('result')} style={{ opacity: calcuute == Infinity || calcuute ==0 ? 0 : 1}} >{calcuute}</h3>
         
       </span>
 
