@@ -9,6 +9,7 @@ function App() {
   const [errorheight,setErrorHeight]=useState("");
   const [hheight,setHheight]=useState(0);
   const [calcuute,setCalcuute]=useState(0);
+  const[bmi,setBmi]=useState("");
 
 
   const handleh=(event)=>{
@@ -29,6 +30,24 @@ function App() {
   }
   const result =()=>{
     if(calcuute == Infinity){  setCalcuute(weight/hheight);} 
+    if(calcuute <18.5){
+      setBmi("Underweight");
+    }
+    if(calcuute >=18.5 && calcuute <25){
+      setBmi("Normal range");
+    }
+    if(calcuute >=25 && calcuute <30){
+      setBmi("Overweight");
+    }
+    if(calcuute >=30 && calcuute <35){
+      setBmi("Obese class I");
+    }
+    if(calcuute >=35 && calcuute <40){
+      setBmi("Obese class II");
+    }
+    if(calcuute >=40){
+      setBmi("Obese class III");
+    }
     
   }
   return (
@@ -48,6 +67,7 @@ function App() {
           <button onClick={calcute}>Calcute</button>
         </div>
         <h3 id='result' onChange={result} style={{ opacity: calcuute == Infinity || calcuute ==0 ? 0 : 1}} >{calcuute}</h3>
+        <h3 id='bmi'onChange={result}>{bmi}</h3>
         
       </span>
 
