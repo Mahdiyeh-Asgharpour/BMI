@@ -27,12 +27,9 @@ function App() {
     
 
   }
-  const result =(props)=>{
+  const result =()=>{
     if(calcuute == Infinity){  setCalcuute(weight/hheight);} 
-    if (calcuute ==Infinity || calcuute ==0){
-      // props.Style.Opacity=0;
-    }
-
+    
   }
   return (
     <div className='app'>
@@ -50,7 +47,7 @@ function App() {
         <div className='btn'>
           <button onClick={calcute}>Calcute</button>
         </div>
-        <h3 id='result' onChange={result('result')} style={{ opacity: calcuute == Infinity || calcuute ==0 ? 0 : 1}} >{calcuute}</h3>
+        <h3 id='result' onChange={result} style={{ opacity: calcuute == Infinity || calcuute ==0 ? 0 : 1}} >{calcuute}</h3>
         
       </span>
 
