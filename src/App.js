@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import img from './h.jpg';
-import {useState} from "react";
+import {useState , useEffect} from "react";
 function App() {
   const [height,setHeight]=useState(0);
   const [weight,setWeight]=useState(0);
@@ -22,14 +22,16 @@ function App() {
     setWeight(event.target.value) ;
   }
   const calcute=()=>{
-    
+    if(calcuute == Infinity){
+      setCalcuute(weight/hheight);
+  } 
     height>99 ? setHheight((height*height)/10000):setErrorHeight("Your number is cm");
     weight>20 ? setCalcuute((weight/hheight).toFixed(2)):setErrorWeight("Your number is kg");
+    result(calcuute);
     
 
   }
-  const result =()=>{
-    if(calcuute == Infinity){  setCalcuute(weight/hheight);} 
+  const result =(calcuute)=>{
     if(calcuute <18.5){
       setBmi("Underweight");
     }
@@ -48,7 +50,6 @@ function App() {
     if(calcuute >=40){
       setBmi("Obese class III");
     }
-    
   }
   return (
     <div className='app'>
@@ -66,8 +67,8 @@ function App() {
         <div className='btn'>
           <button onClick={calcute}>Calcute</button>
         </div>
-        <h3 id='result' onChange={result} style={{ opacity: calcuute == Infinity || calcuute ==0 ? 0 : 1}} >{calcuute}</h3>
-        <h3 id='bmi'onChange={result}>{bmi}</h3>
+        <h3 id='result'  style={{ opacity: calcuute == Infinity || calcuute ==0 ? 0 : 1}} >{calcuute}</h3>
+        <h3 id='bmi' >{bmi}</h3>
         
       </span>
 
