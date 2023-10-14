@@ -22,10 +22,12 @@ function App() {
     setWeight(event.target.value) ;
   }
   const calcute=()=>{
-    calcuute == Infinity ? setCalcuute(weight/hheight) :result(calcuute);
-  
     height>99 ? setHheight((height*height)/10000):(setErrorHeight("Your number is cm") || setColor("red"));
     weight>20 ? setCalcuute((weight/hheight).toFixed(2)):(setErrorWeight("Your number is kg") || setColor("red"));
+    let test=calcuute;
+    test=weight/((height*height)/10000);
+    result(test);
+    setCalcuute(test);
 
   }
   const result =(calcuute)=>{
