@@ -4,7 +4,7 @@ body{
   align-items: center;
   display: flex;
   background-color: #03001C;
-  margin-top: 15em;
+  margin-top: 10em;
 }
 .app{
   background: rgba(255, 255, 255, 0.192);
@@ -53,7 +53,6 @@ button{
   color: #301E67;
   font-weight: bold;
   font-size: x-small;
-  cursor: pointer;
 
 }
 .btn{

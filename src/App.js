@@ -10,30 +10,59 @@ function App() {
   const [hheight,setHheight]=useState(0);
   const [calcuute,setCalcuute]=useState(0);
   const[bmi,setBmi]=useState("");
-  const [color,setColor]=useState("#5B8FB9");
+
 
   const handleh=(event)=>{
-    
-    setHeight(event.target.value) ;
+    let newHeight = height
+    newHeight = event.target.value
+    setHeight(newHeight) ;
    
   }
   const handlew=(event)=>{
-    
-    setWeight(event.target.value) ;
+    let newWeight = weight
+    newWeight = event.target.value  
+    setWeight(newWeight) ;
   }
   const calcute=()=>{
-    height>99 ? setHheight((height*height)/10000):(setErrorHeight("Your number is cm") || setColor("red"));
-    weight>20 ? setCalcuute((weight/hheight).toFixed(2)):(setErrorWeight("Your number is kg") || setColor("red"));
-    let test=calcuute;
-    test=weight/((height*height)/10000);
-    result(test);
-    setCalcuute(test);
+
+    let test = calcuute;
+
+    if((height > 99) && (weight > 20)){
+      setErrorHeight("")
+      setErrorWeight("")
+      setHheight((height*height)/10000)
+      setCalcuute((weight/hheight).toFixed(2))
+      test = weight/((height*height)/10000)
+      result(test)
+      setCalcuute(test)
+    }
+    else{
+      if((height < 99) && (weight < 20)){
+        setErrorHeight("Your number is cm")
+        setErrorWeight("Your number is kg")
+        setCalcuute(0)
+        setBmi("")
+      }
+
+      else{
+        if(height < 99){
+          setErrorHeight("Your number is cm")
+          setErrorWeight("")
+          setCalcuute(0)
+          setBmi("")
+        }
+         
+        if(weight < 20){
+          setErrorWeight("Your number is kg")
+          setErrorHeight("")
+          setCalcuute(0)
+          setBmi("")
+        }
+      }
+    }
 
   }
   const result =(calcuute)=>{
-    setColor("#5B8FB9");
-    setErrorHeight("");
-    setErrorWeight("");
     if(calcuute <18.5){
       setBmi("Underweight");
     }
@@ -53,6 +82,7 @@ function App() {
       setBmi("Obese class III");
     }
   }
+
   return (
     <div className='app'>
       <span>
@@ -61,16 +91,16 @@ function App() {
       <span className='text'>
         <h1>BMI</h1>
         <h3>Height</h3>
-        <input id='height' style={{border:`${color} 2px solid`}} type='text' onChange={handleh} />
+        <input id='height' style={{border: height<99  ? "red 2px solid" : "#5B8FB9 2px solid"}} type='text' onChange={handleh} />
         <h6 >{errorheight}</h6>
         <h3>Weight</h3>
-        <input id='weight' type='text' style={{border:`${color} 2px solid`}} onChange={handlew} />
+        <input id='weight' type='text' style={{border: weight<20  ? "red 2px solid" : "#5B8FB9 2px solid"}} onChange={handlew} />
         <h6 >{errorweight}</h6>
         <div className='btn'>
           <button onClick={calcute}>Calcute</button>
         </div>
         <h3 id='result'  style={{ opacity: calcuute == Infinity || calcuute ==0 ? 0 : 1}} >{calcuute}</h3>
-        <h3 id='bmi' style={{ opacity: calcuute == Infinity || calcuute ==0 ? 0 : 1}}>{bmi}</h3>
+        <h3 id='bmi' >{bmi}</h3>
         
       </span>
 
