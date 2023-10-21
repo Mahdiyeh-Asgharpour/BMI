@@ -86,3 +86,11 @@ h6{
 input{
   border: red 
 }
+@media  screen and (max-height:500px) and (orientation:landscape){
+  body{
+    margin-top: 5px;
+  }
+} 
+@media  screen and (max-width:500px) and (orientation:portrait) {
+  
+}
